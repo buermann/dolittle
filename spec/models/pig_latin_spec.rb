@@ -4,10 +4,10 @@ describe PigLatin, type: :request do
 
   it "should shift the first consonants to the end of the word and append 'ay'" do
     PigLatin.piggify("butter").should   eq "utterbay"
-    PigLatin.piggify("putter").should   eq "utterpay"
-    PigLatin.piggify("clutter").should  eq "utterclay"
-    PigLatin.piggify("stutter").should  eq "utterstay"
-    PigLatin.piggify("splutter").should eq "uttersplay"
+    PigLatin.piggify("potter").should   eq "otterpay"
+    PigLatin.piggify("clamber").should  eq "amberclay"
+    PigLatin.piggify("stairclimber").should  eq "airclimberstay"
+    PigLatin.piggify("splatter").should eq "attersplay"
   end
 
   it "should add an 'ay' to the end of a word that begins with a vowel" do
@@ -28,7 +28,7 @@ describe PigLatin, type: :request do
   end
 
   it "should preserve white space" do
-    PigLatin.piggify("A screaming came  across the sky").should eq "Ayay eamingscray amecay  acrossay ethay yskay"
+    PigLatin.piggify("A screaming came  across the sky").should eq "Ayay eamingscray amecay  acrossay ethay skyay"
   end
 
   it "should conserve capitalization" do
