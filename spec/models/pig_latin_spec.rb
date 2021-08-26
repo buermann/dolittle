@@ -40,16 +40,16 @@ describe PigLatin, type: :request do
     PigLatin.piggify("remember when there were two spaces between sentences.  I do.").should eq "ememberray enwhay erethay otway acesyay etweenbay entencessay.  Iyay oday."
   end
 
-  it "should conserve capitalization" do
+  it "should conserve capitalization at the beginning of sentences and proper nouns" do
     PigLatin.piggify("It was a queer summer when they electrocuted the Rosenbergs and I did not know what I was doing in New York").should eq "Itay asway ayay a ueerqay ummersay enwhay eythay electrocuteday the Osenbergsray anday Iyay idday otnay owknay atwhay Iyay asway oingday inay Ewnay Orkyay"
   end
 
   it "should preserve white space formatting" do
-    PigLatin.piggify("*******\n  A screaming came across the sky").should eq "*******\n  Ayay eamingscray amecay acrossay ethay skyay"
+    PigLatin.piggify("*******\n\n\n\tA screaming came across the sky.").should eq "*******\n\n\n\tAyay eamingscray amecay acrossay ethay skyay."
   end
 
   it "should work in reverse" do
-    PigLatin.anglify("Othermay iedday odaytay. Oray aybemay, esterdayyay; Iyay an'tcay ebay uresay.").should eq "Mother died today. Or maybe, yesterday; I can't be sure."
+    PigLatin.anglify("Stephen Cole Kleene is a hero of mine, but it's hard to tell if he makes my job easier, or harder.").should eq "Ephenstay Olecay Eeneklay isay ayay erohay ofay inemay, utbay it'say ardhay otay elltay ifay ehay akesmay myay objay easieray, oray arderhay."
   end
 
   it "should autodetect which is which, making both methods idempotent" do
