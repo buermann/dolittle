@@ -3,11 +3,11 @@ require 'rails_helper'
 describe PigLatin, type: :request do
 
   it "should shift the first consonants to the end of the word and append 'ay'" do
-    PigLatin.piggify("butter").should   eq "utterbay"
-    PigLatin.piggify("potter").should   eq "otterpay"
-    PigLatin.piggify("clamber").should  eq "amberclay"
-    PigLatin.piggify("stairclimber").should  eq "airclimberstay"
-    PigLatin.piggify("splatter").should eq "attersplay"
+    PigLatin.piggify("batter").should   eq "atterbay"
+    PigLatin.piggify("peter").should    eq "eterbay"
+    PigLatin.piggify("climber").should  eq "imberclay"
+    PigLatin.piggify("prophet").should  eq "ophetpray"
+    PigLatin.piggify("grumble").should  eq "umblegray"
   end
 
   it "should add an 'ay' to the end of a word that begins with a vowel" do
@@ -19,7 +19,7 @@ describe PigLatin, type: :request do
   end
 
 
-  it "should add a 'yay' if the last letter is a vowel" do
+  it "should add a 'yay' if the first and last letter are vowels" do
     PigLatin.piggify("abampere").should eq "abampereyay"
     PigLatin.piggify("eagle").should    eq "eagleyay"
     PigLatin.piggify("idea").should     eq "ideayay"
@@ -27,16 +27,25 @@ describe PigLatin, type: :request do
     PigLatin.piggify("umbrella").should eq "umbrellayay"
   end
 
-  it "should preserve white space" do
-    PigLatin.piggify("A screaming came  across the sky").should eq "Ayay eamingscray amecay  acrossay ethay skyay"
+  it "should conserve punctuation" do
+    PigLatin.piggify("today.").should eq "odaytay."
+    PigLatin.piggify("yesterday;").should eq "esterdayyay;"
+    PigLatin.piggify("kleene?").should eq "eeneklay?"
+    PigLatin.piggify("excelsior!").should eq "excelsioryay!"
+    PigLatin.piggify("KARAMAZOV!!").should eq "ARAMAZOVKAY!!"
+    PigLatin.piggify("which???").should eq "ichwhay???"
+  end
+
+  it "should preserve spaces between words" do
+    PigLatin.piggify("remember when there were two spaces between sentences.  I do.").should eq "ememberray enwhay erethay otway acesyay etweenbay entencessay.  Iyay oday."
   end
 
   it "should conserve capitalization" do
     PigLatin.piggify("It was a queer summer when they electrocuted the Rosenbergs and I did not know what I was doing in New York").should eq "Itay asway ayay a ueerqay ummersay enwhay eythay electrocuteday the Osenbergsray anday Iyay idday otnay owknay atwhay Iyay asway oingday inay Ewnay Orkyay"
   end
 
-  it "should conserve punctuation" do
-    PigLatin.piggify("Mother died today. Or maybe, yesterday; I can't be sure.").should eq "Othermay iedday odaytay. Oray aybemay, esterdayyay; Iyay an'tcay ebay uresay."
+  it "should preserve white space formatting" do
+    PigLatin.piggify("*******\n  A screaming came across the sky").should eq "*******\n  Ayay eamingscray amecay acrossay ethay skyay"
   end
 
   it "should work in reverse" do
