@@ -36,15 +36,19 @@ describe PigLatin, type: :request do
     PigLatin.piggify("which???").should eq "ichwhay???"
   end
 
-  it "should preserve spaces between words" do
-    PigLatin.piggify("remember when there were two spaces between sentences.  I do.").should eq "ememberray enwhay erethay otway acesyay etweenbay entencessay.  Iyay oday."
+  it "should translate complete phrases" do
+    PigLatin.piggify("the best of both worlds once in a blue moon").should eq "ethay estbay ofay othbay orldsway onceyay inay ayay ueblay oonmay"
   end
 
   it "should conserve capitalization at the beginning of sentences and proper nouns" do
     PigLatin.piggify("It was a queer summer when they electrocuted the Rosenbergs and I did not know what I was doing in New York").should eq "Itay asway ayay a ueerqay ummersay enwhay eythay electrocuteday the Osenbergsray anday Iyay idday otnay owknay atwhay Iyay asway oingday inay Ewnay Orkyay"
   end
 
-  it "should preserve white space formatting" do
+  it "should preserve the double-space stop of old typesettings" do
+    PigLatin.piggify("Remember when there were two spaces between sentences.  I do.").should eq "Ememberray enwhay erethay otway acesyay etweenbay entencessay.  Iyay oday."
+  end
+
+  it "should preserve all white space formatting" do
     PigLatin.piggify("*******\n\n\n\tA screaming came across the sky.").should eq "*******\n\n\n\tAyay eamingscray amecay acrossay ethay skyay."
   end
 
