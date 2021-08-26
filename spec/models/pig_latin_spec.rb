@@ -28,12 +28,12 @@ describe PigLatin, type: :request do
   end
 
   it "should conserve punctuation" do
-    PigLatin.piggify("today.").should eq "odaytay."
-    PigLatin.piggify("yesterday;").should eq "esterdayyay;"
-    PigLatin.piggify("kleene?").should eq "eeneklay?"
-    PigLatin.piggify("excelsior!").should eq "excelsioryay!"
-    PigLatin.piggify("KARAMAZOV!!").should eq "ARAMAZOVKAY!!"
-    PigLatin.piggify("which???").should eq "ichwhay???"
+    PigLatin.piggify("today.").should       eq "odaytay."
+    PigLatin.piggify("yesterday;").should   eq "esterdayyay;"
+    PigLatin.piggify("kleene?").should      eq "eeneklay?"
+    PigLatin.piggify("excelsior!").should   eq "excelsioryay!"
+    PigLatin.piggify("KARAMAZOV!!").should  eq "ARAMAZOVKAY!!"
+    PigLatin.piggify("which???").should     eq "ichwhay???"
   end
 
   it "should translate complete phrases" do
