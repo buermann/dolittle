@@ -53,7 +53,7 @@ describe PigLatin, type: :request do
   end
 
   it "should work in reverse" do
-    PigLatin.anglify("Stephen Cole Kleene is a hero of mine, but it's hard to tell if he makes my job easier, or harder.").should eq "Ephenstay Olecay Eeneklay isay ayay erohay ofay inemay, utbay it'say ardhay otay elltay ifay ehay akesmay myay objay easieray, oray arderhay."
+    PigLatin.anglify("Stephen Cole Kleene is a hero of mine, but it's hard to tell if he made my job easier, or harder.").should eq "Ephenstay Olecay Eeneklay isay ayay erohay ofay inemay, utbay it'say ardhay otay elltay ifay ehay ademay myay objay easieray, oray arderhay."
   end
 
   it "should autodetect which is which, making both methods idempotent" do
